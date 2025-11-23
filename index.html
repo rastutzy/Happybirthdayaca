@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Ulang Tahun! 🎂</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;600&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink : #ffd6e8;
+  --pink2: #ffe4ec;
+  --hot  : #ff5e84;
+  --gold : #ffd700;
+  --light-gold: #fff9c4;
+}
+
+* {box-sizing:border-box}
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at center, var(--pink), var(--pink2));
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  perspective:1000px;
+}
+
+/* ---------- Ultimate Cake 5 Detik ---------- */
+.cake-stage{
+  position:absolute;
+  bottom:-500px;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:0;
+  animation:cakeUltimate 5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes cakeUltimate{
+  0%   {bottom:-500px; opacity:0; transform:translateX(-50%) rotate(-20deg) scale(.6);}
+  20%  {bottom:150px; opacity:1; transform:translateX(-50%) rotate(5deg) scale(1.1);}
+  40%  {transform:translateX(-50%) rotate(-2deg) scale(.95);}
+  60%  {transform:translateX(-50%) rotate(1deg) scale(1.02);}
+  80%  {transform:translateX(-50%) rotate(-0.5deg) scale(.98);}
+  100% {bottom:150px; opacity:1; transform:translateX(-50%) rotate(0) scale(1);}
+}
+
+.cake{
+  width:220px;
+  height:140px;
+  background:linear-gradient(145deg, #ff9bb5, #ff6c8b);
+  border-radius:18px;
+  position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  animation:float 4s ease-in-out infinite;
+  animation-delay:1.5s;
+  transform-style: preserve-3d;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(0)}
+  25%{transform:translateY(-15px) rotate(1deg)}
+  75%{transform:translateY(-10px) rotate(-1deg)}
+}
+
+.cake::before{
+  content:"";
+  width:220px;
+  height:40px;
+  background:#ff6c8b;
+  border-radius:18px 18px 0 0;
+  position:absolute;
+  top:-40px;
+}
+
+.candle{
+  width:18px;
+  height:60px;
+  background:#fff;
+  border-radius:8px;
+  position:absolute;
+  top:-85px;
+  left:50%;
+  transform:translateX(-50%);
+  box-shadow:0 0 15px rgba(0,0,0,.1);
+  transform-style: preserve-3d;
+}
+
+.flame{
+  width:0;
+  height:0;
+  background:var(--gold);
+  border-radius:50%;
+  position:absolute;
+  top:-30px;
+  left:50%;
+  transform:translateX(-50%);
+  animation:flameUltimate 1.2s forwards, flameFlicker 0.8s infinite alternate;
+  box-shadow:0 0 25px var(--gold);
+  transform-style: preserve-3d;
+}
+@keyframes flameUltimate{
+  0%{width:0;height:0}
+  50%{width:25px;height:25px}
+  100%{width:22px;height:22px}
+}
+
+@keyframes flameFlicker {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+  50% { transform: translateX(-50%) scale(1.1, 0.9); opacity: 0.9; }
+}
+
+.flame::after{
+  content:'';
+  position:absolute;
+  inset:-15px;
+  background:radial-gradient(circle,rgba(255,215,0,.5),transparent 70%);
+  animation:pulseUltimate 2s infinite;
+}
+@keyframes pulseUltimate{
+  0%,100%{transform:scale(1);opacity:.5}
+  50%{transform:scale(1.6);opacity:1}
+}
+
+/* ---------- Epic Halo ---------- */
+.halo{
+  width:350px;
+  height:350px;
+  background:radial-gradient(circle,rgba(255,215,0,.3),transparent 70%);
+  position:absolute;
+  bottom:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  filter:blur(50px);
+  opacity:0;
+  animation:haloUltimate 3s forwards;
+  animation-delay:.8s;
+}
+@keyframes haloUltimate{to{opacity:1}}
+
+/* ---------- Fog Dreamy ---------- */
+.fog{
+  position:absolute;
+  bottom:-60px;
+  left:50%;
+  transform:translateX(-50%);
+  width:280px;
+  height:100px;
+  background:radial-gradient(ellipse,rgba(255,255,255,.5),transparent 70%);
+  filter:blur(30px);
+  opacity:0;
+  animation:fogUltimate 3s forwards;
+  animation-delay:1.2s;
+}
+@keyframes fogUltimate{to{opacity:1}}
+
+/* ---------- Orbit Particles ---------- */
+.orbit{
+  position:absolute;
+  top:50%;left:50%;
+  width:300px;height:300px;
+  transform:translate(-50%,-50%);
+  opacity:0;
+  animation:orbitUltimate 1s forwards;
+  animation-delay:1.5s;
+}
+@keyframes orbitUltimate{to{opacity:1}}
+
+.orbit span{
+  position:absolute;
+  top:50%;left:50%;
+  width:10px;height:10px;
+  background:var(--gold);
+  border-radius:50%;
+  box-shadow:0 0 15px var(--gold);
+  transform-style: preserve-3d;
+}
+
+.orbit span:nth-child(1){
+  transform:rotate(0deg) translateX(150px);
+  animation:orbitMove 8s linear infinite;
+}
+.orbit span:nth-child(2){
+  transform:rotate(120deg) translateX(150px);
+  animation:orbitMove 8s linear infinite .8s;
+}
+.orbit span:nth-child(3){
+  transform:rotate(240deg) translateX(150px);
+  animation:orbitMove 8s linear infinite 1.6s;
+}
+@keyframes orbitMove{
+  from{transform:rotate(0deg) translateX(150px) rotate(0deg)}
+  to{transform:rotate(360deg) translateX(150px) rotate(-360deg)}
+}
+
+/* ---------- Epic Text ---------- */
+.epic-text{
+  position:absolute;
+  top:50%;
+  transform:translateY(-280px);
+  width:100%;
+  text-align:center;
+  color:#c2185b;
+  font-family:'Great Vibes',cursive;
+  font-size:3.5rem;
+  opacity:0;
+  animation:textUltimate 3s forwards;
+  animation-delay:2s;
+  text-shadow:0 3px 15px rgba(0,0,0,.2);
+  transform-style: preserve-3d;
+}
+@keyframes textUltimate{
+  0% { opacity:0; transform:translateY(-280px) scale(0.8); }
+  50% { opacity:1; transform:translateY(-260px) scale(1.05); }
+  100% { opacity:1; transform:translateY(-260px) scale(1); }
+}
+
+/* ---------- Gift Box (muncul setelah 5 detik) ---------- */
+.gift-area{
+  position:absolute;
+  bottom:60px;
+  opacity:0;
+  animation:fadeInUltimate 1s forwards;
+  animation-delay:5s;
+  transform-style: preserve-3d;
+}
+@keyframes fadeInUltimate{to{opacity:1}}
+
+.box{
+  width:200px;
+  height:200px;
+  background:var(--hot);
+  border-radius:15px;
+  position:relative;
+  cursor:pointer;
+  transition:transform .3s ease;
+  transform-style: preserve-3d;
+}
+.box:hover{transform:translateY(-6px) scale(1.03)}
+
+.lid{
+  width:220px;
+  height:45px;
+  background:#ff2f60;
+  border-radius:15px;
+  position:absolute;
+  top:-40px;
+  left:-10px;
+  transform-origin:bottom;
+  transition:transform .8s cubic-bezier(.68,-0.55,.27,1.55);
+  transform-style: preserve-3d;
+}
+.open .lid{
+  transform:rotateX(-120deg) translateY(-120px);
+  opacity:0;
+}
+
+.ribbon{
+  width:35px;
+  height:100%;
+  background:white;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+.ribbon::before,.ribbon::after{
+  content:'';
+  position:absolute;
+  width:45px;
+  height:45px;
+  background:white;
+  border-radius:50%;
+  top:-22px;
+  left:-5px;
+  box-shadow:0 0 15px rgba(0,0,0,.1)
+}
+.ribbon::after{top:auto;bottom:-22px}
+
+/* ---------- TULISAN BUKA KADONYA ---------- */
+.buka-kado{
+  position:absolute;
+  bottom:280px;               /* tepat di atas kado */
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Fredoka One',cursive;
+  font-size:2.2rem;
+  color:#fff;
+  text-shadow:0 0 10px #ff2f60, 0 0 20px #ff2f60;
+  opacity:0;
+  animation:fadeBuka 1s forwards, pulseText 2s infinite alternate;
+  animation-delay:5s;         /* muncul bersamaan dengan kado */
+  pointer-events:none;
+}
+@keyframes fadeBuka{
+  to{opacity:1;}
+}
+@keyframes pulseText {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.05); }
+}
+
+/* ---------- Fade-out ---------- */
+#curtain{
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at center, var(--pink), var(--pink2));
+  z-index:10;
+  pointer-events:none;
+  opacity:0;
+}
+.fadeOut #curtain{animation:fadeOut 1s forwards}
+@keyframes fadeOut{to{opacity:1}}
+
+/* ---------- Floating Particles Background ---------- */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--light-gold);
+  opacity: 0.6;
+  animation: floatParticle 15s infinite linear;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- Sparkle Effect ---------- */
+.sparkle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: sparkleEffect 1.5s ease-out forwards;
+}
+
+@keyframes sparkleEffect {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1) rotate(180deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+<div id="curtain"></div>
+
+<!-- Teks Epic -->
+<div class="epic-text">Selamat Ulang Tahun!</div>
+
+<!-- Kue Ultimate -->
+<div class="cake-stage">
+  <div class="cake">
+    <div class="candle"><div class="flame"></div></div>
+  </div>
+  <div class="halo"></div>
+  <div class="fog"></div>
+  <div class="orbit">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+<!-- Tulisan BUKA KADONYA! -->
+<div class="buka-kado">BUKA KADONYA!</div>
+
+<!-- Kado (muncul tepat setelah 5 detik) -->
+<div class="gift-area">
+  <div class="box" id="giftBox" onclick="openGift()">
+    <div class="lid"></div>
+    <div class="ribbon"></div>
+  </div>
+</div>
+
+<script>
+// Create floating background particles
+function createParticles() {
+  const particleCount = 20;
+  for (let i = 0; i < particleCount; i++) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Random size between 3px and 8px
+    const size = Math.random() * 5 + 3;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    
+    // Random position
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.top = `${Math.random() * 100}vh`;
+    
+    // Random animation delay and duration
+    const delay = Math.random() * 15;
+    const duration = 15 + Math.random() * 10;
+    particle.style.animationDelay = `${delay}s`;
+    particle.style.animationDuration = `${duration}s`;
+    
+    document.body.appendChild(particle);
+  }
+}
+
+// Create sparkle effect
+function createSparkle(x, y) {
+  const sparkle = document.createElement('div');
+  sparkle.classList.add('sparkle');
+  
+  sparkle.style.left = `${x}px`;
+  sparkle.style.top = `${y}px`;
+  
+  // Random size variation
+  const size = Math.random() * 6 + 4;
+  sparkle.style.width = `${size}px`;
+  sparkle.style.height = `${size}px`;
+  
+  document.body.appendChild(sparkle);
+  
+  // Remove sparkle after animation completes
+  setTimeout(() => {
+    sparkle.remove();
+  }, 1500);
+}
+
+// Add sparkle effect on mouse move
+document.addEventListener('mousemove', (e) => {
+  // Only create sparkles occasionally
+  if (Math.random() > 0.7) {
+    createSparkle(e.clientX, e.clientY);
+  }
+});
+
+function openGift(){
+  const box=document.getElementById('giftBox');
+  if(box.classList.contains('open'))return;
+  box.classList.add('open');
+
+  // Create sparkle burst when opening gift
+  for (let i = 0; i < 15; i++) {
+    setTimeout(() => {
+      const rect = box.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      createSparkle(x, y);
+    }, i * 100);
+  }
+
+  /* Ledakan partikel emas besar */
+  for(let i=0;i<80;i++){
+    const p=document.createElement('div');
+    p.style.position='absolute';
+    p.style.width='10px';
+    p.style.height='10px';
+    p.style.background='#ffd700';
+    p.style.borderRadius='50%';
+    p.style.boxShadow='0 0 15px #ffd700';
+    p.style.left='50%';
+    p.style.top='50%';
+    p.style.pointerEvents='none';
+    p.style.zIndex = '5';
+    document.body.appendChild(p);
+
+    const angle=Math.random()*360;
+    const dist=100+Math.random()*200;
+    const x=Math.cos(angle*Math.PI/180)*dist;
+    const y=Math.sin(angle*Math.PI/180)*dist;
+    p.style.transition='all 1.5s cubic-bezier(.22,.61,.36,1)';
+    setTimeout(()=>{
+      p.style.transform=`translate(${x}px, ${y}px) rotate(${Math.random()*720}deg)`;
+      p.style.opacity='0';
+    },10);
+    setTimeout(()=>p.remove(),1500);
+  }
+
+  /* Fade-out dan pindah */
+  setTimeout(()=>{
+    document.body.classList.add('fadeOut');
+    setTimeout(()=>{
+      window.location.href='birthday.html';
+    },1000);
+  },2000);
+}
+
+// Initialize particles when page loads
+window.addEventListener('load', createParticles);
+</script>
+</body>
+</html>
